@@ -43,7 +43,7 @@ class HomeViewController: UIViewController {
         channelContainerView.snp.makeConstraints { (make) in
             make.left.right.equalToSuperview()
             make.height.equalTo(30)
-            make.top.equalTo(64)
+            make.top.equalTo(44+UIApplication.shared.statusBarFrame.size.height)
         }
         
         let flowLayout = UICollectionViewFlowLayout()

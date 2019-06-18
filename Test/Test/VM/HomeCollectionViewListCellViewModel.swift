@@ -121,7 +121,65 @@ class HomeCollectionViewListCellViewModel: RecommendListCollectionViewCellViewMo
     }
     
     func requestNextPageData(complete:@escaping ((Error?) -> Void)){
-//        complete()
+        if category.id == 0{
+            requestRecommendNextPageList(complete: complete)
+        }else{
+            requestCategoriesNextPageList(complete: complete)
+        }
+    }
+    
+    func requestRecommendNextPageList(complete:@escaping ((Error?)->Void)){
+
+            requestRecommendList(pageIndex: pageIndex+1).subscribe(onNext: { [weak self] (products) in
+                if let strongSelf = self {
+                    let goodPriceCells = products.map({ (product) -> CellViewModelProtocol in
+                        if product.type == .experience || product.type == .experiences {
+                            return GoodsTableViewCellViewModel(product: product)
+                        }else if product.type == .discovery || product.type == .discoveries{
+                            return ArticleTableViewCellViewModel(product: product)
+                        }else{
+                            return GoodPriceTableViewCellViewModel(product: product)
+                        }
+                    })
+                    strongSelf.pageIndex += 1
+                    strongSelf.dataSource.append(contentsOf: goodPriceCells)
+                }
+                }, onError: { (error) in
+                    DispatchQueue.main.async {
+                        complete(error)
+                    }
+            }, onCompleted: {
+                DispatchQueue.main.async {
+                    complete(nil)
+                }
+            }).disposed(by: bag)
+        
+    }
+    private func requestCategoriesNextPageList(complete:@escaping((Error?)->Void)) {
+        requestCategoryList(pageIndex: pageIndex + 1).subscribe(onNext: { [weak self](products) in
+            if let strongSelf = self {
+                let goodPriceCells = products.map { (product) -> CellViewModelProtocol in
+                    if product.type == .experience || product.type == .experiences {
+                        return GoodsTableViewCellViewModel(product:product)
+                    } else if product.type == .discovery || product.type == .discoveries {
+                        return ArticleTableViewCellViewModel(product:product)
+                    } else {
+                        return GoodPriceTableViewCellViewModel(product:product)
+                    }
+                }
+                strongSelf.pageIndex += 1
+                strongSelf.dataSource.append(contentsOf: goodPriceCells)
+            }
+            }, onError: { (error) in
+                DispatchQueue.main.async {
+                   
+                    complete(error)
+                }
+        }, onCompleted: {
+            DispatchQueue.main.async {
+                complete(nil)
+            }
+        }).disposed(by: bag)
     }
     
     private func requestCategoryList(pageIndex: Int) -> Observable<[Product]>{

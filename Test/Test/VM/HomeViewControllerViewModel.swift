@@ -45,9 +45,32 @@ class HomeViewControllerViewModel: BaseCategoryViewModelProtocol {
                 complete(nil)
             }
         }).disposed(by: bag)
+        
     }
     
     func requestCategories() -> Observable<[Category]> {
+        
+       
+//        msdApiProvider.request(.categoriesListApi, callbackQueue: nil, progress: { (response) in
+//            print("response = \(response)")
+//        }) { (result) in
+//            switch result {
+//            case let .success(response):
+//                do {
+//
+//                    let decoder = JSONDecoder()
+//
+//                    let user = try decoder.decode([Category].self, from: response.data)
+//                    print("user==22===\(user)")
+//
+//                } catch {
+//                    print("MoyaError.jsonMapping(result) = \(MoyaError.jsonMapping(response))")
+//                }
+//            default:
+//                break
+//            }
+//        }
+        
         return msdApiProvider.rx.request(.categoriesListApi).map([Category].self,
                 atKeyPath: nil, using: JSONDecoder(), failsOnEmptyData: false).asObservable()
     }

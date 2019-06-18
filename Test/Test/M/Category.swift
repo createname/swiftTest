@@ -12,6 +12,7 @@ struct Category: Codable{
     var id: UInt
     var name: String
     
+    
     enum CodingKeys: String, CodingKey {
         case id
         case name

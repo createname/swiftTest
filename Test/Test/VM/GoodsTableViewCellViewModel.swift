@@ -12,7 +12,11 @@ struct GoodsTableViewCellViewModel: CellViewModelProtocol {
     var product: Product
     
     var time: String{
-        return product.publishedAt!.dateTime(format: "MM-dd")
+
+        guard let date: Date = product.publishedAt else {
+            return ""
+        }
+        return date.dateTime(format: "MM-dd")
     }
     
     func cellReuseIdentifier() -> String {

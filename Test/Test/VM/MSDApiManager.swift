@@ -17,6 +17,8 @@ enum MSDApiManager {
     case galleriesApi
     /// 推荐列表
     case dealsApi(page: Int)
+    /// 晒单列表
+    case experiencesApi(page: Int)
     /// 搜索
     case searchApi(type: recommendType, keyWord: String, page: Int)
 }
@@ -45,13 +47,15 @@ extension MSDApiManager: TargetType{
             case .favorites:
                 return "/v1/favorites.json"
             }
+        case .experiencesApi:
+            return "/v1/experiences.json"
         }
         
     }
     
     var method: Moya.Method{
         switch self {
-        case .categoriesListApi,.galleriesApi,.dealsApi,.searchApi:
+        case .categoriesListApi,.galleriesApi,.dealsApi,.searchApi,.experiencesApi:
             return .get
         }
     }
@@ -60,7 +64,7 @@ extension MSDApiManager: TargetType{
         switch self {
         case .categoriesListApi,.galleriesApi:
             return .requestPlain
-        case .dealsApi(let page):
+        case .dealsApi(let page),.experiencesApi(let page):
             return .requestParameters(parameters: ["page":page], encoding: URLEncoding.default)
             
         case let .searchApi(type, keyWord, page):
