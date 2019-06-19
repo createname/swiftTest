@@ -1,6 +1,7 @@
 PODS:
   - Alamofire (4.8.1)
   - DeviceKit (1.11.0)
+  - HandyJSON (5.0.0)
   - MJRefresh (3.1.15.7)
   - Moya/Core (12.0.1):
     - Alamofire (~> 4.1)
@@ -8,6 +9,7 @@ PODS:
   - Moya/RxSwift (12.0.1):
     - Moya/Core
     - RxSwift (~> 4.0)
+  - ObjectMapper (3.5.0)
   - Result (4.1.0)
   - RxAtomic (4.4.1)
   - RxCocoa (4.4.1):
@@ -37,26 +39,32 @@ PODS:
   - SwifterSwift/SpriteKit (4.6.0)
   - SwifterSwift/SwiftStdlib (4.6.0)
   - SwifterSwift/UIKit (4.6.0)
+  - SwiftyJSON (5.0.0)
   - "UITableView+FDTemplateLayoutCell (1.6)"
 
 DEPENDENCIES:
   - Alamofire
   - DeviceKit
+  - HandyJSON
   - MJRefresh
   - Moya/RxSwift
+  - ObjectMapper
   - RxCocoa
   - RxSwift
   - SDCycleScrollView
   - SnapKit
   - SwifterSwift
+  - SwiftyJSON
   - "UITableView+FDTemplateLayoutCell"
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - Alamofire
     - DeviceKit
+    - HandyJSON
     - MJRefresh
     - Moya
+    - ObjectMapper
     - Result
     - RxAtomic
     - RxCocoa
@@ -65,13 +73,16 @@ SPEC REPOS:
     - SDWebImage
     - SnapKit
     - SwifterSwift
+    - SwiftyJSON
     - "UITableView+FDTemplateLayoutCell"
 
 SPEC CHECKSUMS:
   Alamofire: 16ce2c353fb72865124ddae8a57c5942388f4f11
   DeviceKit: a3a86f8dddbe1317a9a243cdf9646858bf135dce
+  HandyJSON: 992f2d661716d6a91de82d0056927bc7813b5770
   MJRefresh: 697f8ec75ebdbe9207767bb682cf0f51b0d8a41f
   Moya: cf730b3cd9e005401ef37a85143aa141a12fd38f
+  ObjectMapper: 078b564ed25c6578b62588e306bf1da3924636d4
   Result: bd966fac789cc6c1563440b348ab2598cc24d5c7
   RxAtomic: f8d6adc1ccb87a767811269e4875887bc74dbf19
   RxCocoa: 2f35a76bf8887872e28a1914112395b11b8e0e64
@@ -80,8 +91,9 @@ SPEC CHECKSUMS:
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SnapKit: fe8a619752f3f27075cc9a90244d75c6c3f27e2a
   SwifterSwift: 812ffec6f301922f5430e75be3f2939ea3a80024
+  SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
   "UITableView+FDTemplateLayoutCell": 5c949b4a5059c404b442926c0e80f81d10a2d66f
 
-PODFILE CHECKSUM: 3f3dd531436c4425ca759fbf61b549f9597c8a1d
+PODFILE CHECKSUM: e2fe2f39f1e19f82471b492a94350b043ea80b69
 
 COCOAPODS: 1.7.0.beta.1

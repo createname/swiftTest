@@ -17,4 +17,7 @@ target 'Test' do
   pod 'SDCycleScrollView'
   pod 'SwifterSwift'
   
+  pod 'SwiftyJSON'
+  pod 'ObjectMapper'
+  pod 'HandyJSON'
 end

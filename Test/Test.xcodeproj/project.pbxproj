@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5507D89022B8E59A007BBC9E /* HandyProduct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5507D88F22B8E59A007BBC9E /* HandyProduct.swift */; };
 		551E0E612271AE27003EF080 /* BannerTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E0E602271AE27003EF080 /* BannerTableViewCellViewModel.swift */; };
 		551E0E632271B5A4003EF080 /* HomeCategoriesTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E0E622271B5A4003EF080 /* HomeCategoriesTableViewCellViewModel.swift */; };
 		551E0E652271BBD4003EF080 /* GoodsTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 551E0E642271BBD4003EF080 /* GoodsTableViewCellViewModel.swift */; };
@@ -72,6 +73,7 @@
 
 /* Begin PBXFileReference section */
 		1BC1E4576743669F6A2D48BB /* Pods-Test.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Test.debug.xcconfig"; path = "Target Support Files/Pods-Test/Pods-Test.debug.xcconfig"; sourceTree = "<group>"; };
+		5507D88F22B8E59A007BBC9E /* HandyProduct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HandyProduct.swift; sourceTree = "<group>"; };
 		551E0E602271AE27003EF080 /* BannerTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BannerTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		551E0E622271B5A4003EF080 /* HomeCategoriesTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCategoriesTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		551E0E642271BBD4003EF080 /* GoodsTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -292,6 +294,7 @@
 			children = (
 				55E74D9F2269AF6E00876CE0 /* Category.swift */,
 				55E74DA92269D22C00876CE0 /* Product.swift */,
+				5507D88F22B8E59A007BBC9E /* HandyProduct.swift */,
 			);
 			path = M;
 			sourceTree = "<group>";
@@ -497,6 +500,7 @@
 			files = (
 				551E0E682271BD22003EF080 /* DateTime+Extension.swift in Sources */,
 				55B30B6922757607007D4312 /* GoodsTableViewCell.swift in Sources */,
+				5507D89022B8E59A007BBC9E /* HandyProduct.swift in Sources */,
 				55B30B72227579AB007D4312 /* UIImageView+Extension.swift in Sources */,
 				55E74DA22269B5D300876CE0 /* MSDApiManager.swift in Sources */,
 				55E74D6922699C1000876CE0 /* ViewController.swift in Sources */,

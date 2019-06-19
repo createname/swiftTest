@@ -10,6 +10,8 @@ import UIKit
 import Moya
 import RxSwift
 import RxCocoa
+import SwiftyJSON
+import HandyJSON
 
 class GoodsViewControllerViewModel: NSObject {
 
@@ -73,7 +75,49 @@ class GoodsViewControllerViewModel: NSObject {
     func requestExperiencesList(pageIndex: Int) -> Observable<[Product]> {
         let decoder = JSONDecoder()
         decoder.dateDecodingStrategy = .formatted(DateFormatter.iso8601Full)
+
+        //HandyJson转模型
+//        return msdApiProvider.rx.request(.experiencesApi(page: pageIndex)).asObservable().mapHandyJsonModel(HandyProduct.self)
+        //系统转模型
         return msdApiProvider.rx.request(.experiencesApi(page: pageIndex)).map([Product].self, atKeyPath: nil, using: decoder, failsOnEmptyData: false).asObservable()
         
     }
 }
+
+extension Response {
+    func mapHandyJsonModel<T: HandyJSON>(_ type: T.Type) -> T {
+        let jsonString = String.init(data: data, encoding: .utf8)
+
+        if let modelT = JSONDeserializer<T>.deserializeFrom(json: jsonString) {
+            return modelT
+        }
+        return JSONDeserializer<T>.deserializeFrom(json: "{\"msg\":\"请求有误\"}")!
+    }
+    
+    func mapHandyJsonModelArray<T: HandyJSON>(_ type: T.Type) -> [T] {
+        let jsonString = String.init(data: data, encoding: .utf8)
+        
+        if let modelT = JSONDeserializer<T>.deserializeModelArrayFrom(json: jsonString) {
+            return modelT as! [T]
+        }
+        return [JSONDeserializer<T>.deserializeFrom(json: "{\"msg\":\"请求有误\"}")!]
+    }
+}
+
+extension ObservableType where E == Response {
+    ///json转模型
+    public func mapHandyJsonModel<T: HandyJSON>(_ type: T.Type) -> Observable<T> {
+
+        return flatMap { response -> Observable<T> in
+          
+            return Observable.just(response.mapHandyJsonModel(T.self))
+        }
+    }
+    ///json转模型数组
+    func mapResponseToObjectArray<T: HandyJSON>(type: T.Type) -> Observable<[T]> {
+        return flatMap { response -> Observable<[T]> in
+            return Observable.just(response.mapHandyJsonModelArray(T.self))
+        }
+    }
+}
+
